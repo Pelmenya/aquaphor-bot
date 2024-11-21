@@ -16,15 +16,20 @@ export class BotService {
         await ctx.reply(
             'Добро пожаловать! Используйте меню команд для начала.',
             Markup.inlineKeyboard([
-                Markup.button.callback('Опция 1', 'option_1'),
+                Markup.button.callback('Контакты', 'contacts'),
                 Markup.button.callback('Опция 2', 'option_2'),
             ]),
         );
     }
-
-    @Action('option_1')
-    async onOption1(@Ctx() ctx: Context) {
-        await ctx.reply('Вы выбрали опцию 1');
+    @Action('contacts')
+    async onContacts(@Ctx() ctx: Context) {
+        await ctx.reply(
+            '*Контакты:*\n'+
+            '• *Офис*: _Московская область, г\\. Ступино, ул\\. Пристанционная 6 стр\\. 3, эт\\. 2\\._\n' +
+            '• *Офис*: _Москва, ул\\. Ленинская Слобода, 26с5, эт\\. 1, оф\\. 1312, БЦ "Симонов Плаза"\\._\n' +
+            '• *Склад*: _Московская область, г\\. Ступино, ул\\. Транспортная 3\\._',
+            { parse_mode: 'MarkdownV2' }
+        );
     }
 
     @Action('option_2')
